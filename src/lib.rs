@@ -1,14 +1,15 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub mod skim;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[cfg(not(feature = "compact"))]
+type IndexType = usize;
+#[cfg(not(feature = "compact"))]
+type ScoreType = i64;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+#[cfg(feature = "compact")]
+type IndexType = u32;
+#[cfg(feature = "compact")]
+type ScoreType = i32;
+
+pub trait FuzzyMatcher {
+    fn fuzzy_indices(&self, choice: &str, pattern: &str) -> Option<(ScoreType, Vec<IndexType>)>;
 }

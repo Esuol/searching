@@ -6,8 +6,15 @@ repository = "https://github.com/berlinen/searching.git"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+default = []
+compact = []
+
 [dependencies]
 thread_local = "1.0.3"
 
 [dev-dependencies]
 termion = "4.0.0"
+
+# fork by name = "fuzzy-matcher" https://github.com/lotabout/fuzzy-matcher
+# practice for learning
